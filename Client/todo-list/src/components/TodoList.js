@@ -17,19 +17,34 @@ function TodoList() {
         handleCreate(service, formData, () => fetchData(service, setCards));
     };
 
+    const styles = {
+        ul: {
+            listStyleType: "none",
+            margin: 0,
+            padding: 0,
+        },
+        centerContent: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        },
+    }
+
     return (
-        <div>
-            <h1>Todo List</h1>
-            <ul>
-                {cards.map((card) => (
-                    <Card
-                        key={card.id}
-                        card={card}
-                        onEdit={(id, data) => handleEdit(service, id, data, () => fetchData(service, setCards))}
-                        onDelete={(id) => handleDelete(service, id, () => fetchData(service, setCards))}
-                    />
-                ))}
-            </ul>
+        <>
+            <h1 style={ styles.centerContent }>Todo List</h1>
+            <div style={ styles.centerContent }>
+                <ul style={styles.ul}>
+                    {cards.map((card) => (
+                        <Card
+                            key={card.id}
+                            card={card}
+                            onEdit={(id, data) => handleEdit(service, id, data, () => fetchData(service, setCards))}
+                            onDelete={(id) => handleDelete(service, id, () => fetchData(service, setCards))}
+                        />
+                    ))}
+                </ul>
+            </div>
             <form>
                 <label>
                     Name:
@@ -55,7 +70,7 @@ function TodoList() {
                     Create
                 </button>
             </form>
-        </div>
+        </>
     );
 };
 
