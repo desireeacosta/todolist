@@ -2,20 +2,34 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import apiService from '../service/apiService';
 import { fetchData, handleCreate, handleDelete, handleEdit } from '../utils/helperFunctions';
+import Modal from './Modal';
+import TaskForm from './TaskForm';
 
 const service = apiService();
 
 function TodoList() {
     const [cards, setCards] = useState([]);
-    const [formData, setFormData] = useState({ name: '', description: '' });
+    const [formData, setFormData] = useState({ name: '' });
+    const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
+
+    const openNewTask = () => {
+        setIsNewTaskOpen(true);
+    };
+
+    const closeNewTask = () => {
+        setIsNewTaskOpen(false);
+    };
+
+    const handleCreateClick = () => {
+        handleCreate(service, formData, () => {
+            fetchData(service, setCards);
+            closeNewTask();
+        });
+    };
 
     useEffect(() => {
         fetchData(service, setCards);
     }, []);
-
-    const handleCreateClick = () => {
-        handleCreate(service, formData, () => fetchData(service, setCards));
-    };
 
     const styles = {
         ul: {
@@ -28,12 +42,15 @@ function TodoList() {
             justifyContent: "center",
             alignItems: "center",
         },
-    }
+        button: {
+            margin: 5,
+        },
+    };
 
     return (
         <>
-            <h1 style={ styles.centerContent }>Todo List</h1>
-            <div style={ styles.centerContent }>
+            <h1 style={styles.centerContent}>Todo List</h1>
+            <div style={styles.centerContent}>
                 <ul style={styles.ul}>
                     {cards.map((card) => (
                         <Card
@@ -45,33 +62,21 @@ function TodoList() {
                     ))}
                 </ul>
             </div>
-            <form>
-                <label>
-                    Name:
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                </label>
-                <br />
-                <label>
-                    Description:
-                    <input
-                        type="text"
-                        name="description"
-                        value={formData.description}
-                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    />
-                </label>
-                <br />
-                <button type="button" onClick={handleCreateClick}>
-                    Create
-                </button>
-            </form>
+            <div style={styles.centerContent}>
+                <button style={ styles.button } onClick={openNewTask}> Add new task </button>
+                <button style={ styles.button }> Delete done </button>
+            </div>
+            <Modal isOpen={isNewTaskOpen} onClose={closeNewTask}>
+                <h2>New Task</h2>
+                <TaskForm
+                    formData={formData}
+                    setFormData={setFormData}
+                    handleCreateClick={handleCreateClick}
+                    closeNewTask={closeNewTask}
+                />
+            </Modal>
         </>
     );
-};
+}
 
 export default TodoList;
