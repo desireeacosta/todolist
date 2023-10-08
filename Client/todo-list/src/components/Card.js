@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import DeleteIcon from './icons/DeleteIcon';
+import EditIcon from './icons/EditIcon';
 import Modal from './Modal';
 
 function Card({ card, onDelete, onEdit }) {
@@ -46,48 +48,79 @@ function Card({ card, onDelete, onEdit }) {
             alignContent: "center",
             margin: 16,
         },
-        button: {
+        centerContent: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        },
+        ghostButton: {
             border: "none",
             backgroundColor: "none",
             borderRadius: "50%",
         },
+        button: {
+            padding: "10px 25px",
+            margin: "10px 5px",
+            border: "none",
+            borderRadius: "5px",
+            fontWeight: "bold",
+            fontSize: "16px",
+            color: "#ffffff",
+        },
+        input: {
+            border: "2px solid #9ECEC5",
+            fontSize: "16px",
+            borderRadius: "5px",
+            padding: "8px",
+            outline: "none",
+            width: "300px",
+            margin: "10px",
+        },
+        title: {
+            fontSize: "30px",
+            margin: "10px",
+        },
+        p: {
+            margin: "10px",
+        }
+    };
+
+    const successStyle = {
+        ...styles.button,
+        backgroundColor: "#9ECEA9",
+    };
+
+    const warningStyle = {
+        ...styles.button,
+        backgroundColor: "#CE9EAF",
     };
 
     return (
         <div style={styles.div}>
             <li>
                 {card.name}
-                <button style={styles.button} onClick={openEdit}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pencil" width="16" height="16" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
-                        <path d="M13.5 6.5l4 4" />
-                    </svg>
+                <button style={styles.ghostButton} onClick={openEdit}>
+                    <EditIcon />
                 </button>
-                <button style={styles.button} onClick={openDelete}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 7l16 0" />
-                        <path d="M10 11l0 6" />
-                        <path d="M14 11l0 6" />
-                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                    </svg>
+                <button style={styles.ghostButton} onClick={openDelete}>
+                    <DeleteIcon />
                 </button>
                 <input type="checkbox" checked={card.status} onChange={handleCheckboxChange} />
             </li>
             <Modal isOpen={isDeleteOpen} onClose={closeDelete}>
-                <h2>Delete Task</h2>
-                <p>Are you sure you want to delete this card?</p>
-                <button onClick={handleDeleteClick}>Yes</button>
-                <button onClick={closeDelete}>No</button>
+                <h2 style={ styles.title }>Delete Task</h2>
+                <p style={ styles.p }>Are you sure you want to delete this card?</p>
+                <button style={successStyle} onClick={handleDeleteClick}>Yes</button>
+                <button style={warningStyle} onClick={closeDelete}>No</button>
             </Modal>
             <Modal isOpen={isEditing} onClose={closeEdit}>
-                <h2>Edit Task</h2>
-                <input type="text" name="name" value={editedData.name} onChange={handleInputChange} />
+                <h2 style={ styles.title }>Edit Task</h2>
+                <div style={styles.centerContent}>
+                    <input style={ styles.input } type="text" name="name" value={editedData.name} onChange={handleInputChange} />
+                </div>
                 <div>
-                    <button onClick={saveEdit}>Save</button>
-                    <button onClick={closeEdit}>Cancel</button>
+                    <button style={successStyle} onClick={saveEdit}>Save</button>
+                    <button style={warningStyle} onClick={closeEdit}>Cancel</button>
                 </div>
             </Modal>
         </div>

@@ -45,6 +45,10 @@ function TodoList() {
         button: {
             margin: 5,
         },
+        title: {
+            fontSize: "30px",
+            margin: "10px",
+        },
     };
 
     return (
@@ -67,7 +71,7 @@ function TodoList() {
                 <button style={ styles.button }> Delete done </button>
             </div>
             <Modal isOpen={isNewTaskOpen} onClose={closeNewTask}>
-                <h2>New Task</h2>
+                <h2 style={ styles.title }>New Task</h2>
                 <TaskForm
                     formData={formData}
                     setFormData={setFormData}
