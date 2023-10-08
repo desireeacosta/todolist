@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
+import Modal from './Modal';
 
 function Card({ card, onDelete, onEdit }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedData, setEditedData] = useState({ name: card.name });
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
+    const openDelete = () => {
+        setIsDeleteOpen(true);
+    };
+
+    const closeDelete = () => {
+        setIsDeleteOpen(false);
+    };
 
     const handleEditClick = () => {
         setIsEditing(true);
@@ -62,7 +72,7 @@ function Card({ card, onDelete, onEdit }) {
                                 <path d="M13.5 6.5l4 4" />
                             </svg>
                         </button>
-                        <button style={styles.button} onClick={handleDeleteClick}>
+                        <button style={styles.button} onClick={openDelete}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M4 7l16 0" />
@@ -76,6 +86,12 @@ function Card({ card, onDelete, onEdit }) {
                     </>
                 )}
             </li>
+            <Modal isOpen={isDeleteOpen} onClose={closeDelete}>
+                <h2>Delete Task</h2>
+                <p>Are you sure you want to delete this card?</p>
+                <button onClick={handleDeleteClick}>Yes</button>
+                <button onClick={closeDelete}>No</button>
+            </Modal>
         </div>
     );
 }
