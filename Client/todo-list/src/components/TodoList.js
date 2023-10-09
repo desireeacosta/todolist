@@ -7,6 +7,7 @@ import TaskForm from './TaskForm';
 import styles from './styles/TodoListStyle';
 import successStyle from './styles/SuccessStyle';
 import warningStyle from './styles/WarningStyle';
+import EmptyTable from './EmptyTable';
 
 const service = apiService();
 
@@ -36,22 +37,26 @@ function TodoList() {
 
     return (
         <>
-            <h1 style={{...styles.centerContent, ...styles.title}}>Todo List</h1>
+            <h1 style={{ ...styles.centerContent, ...styles.title }}>Todo List</h1>
             <div style={styles.centerContent}>
                 <button style={successStyle} onClick={openNewTask}> Add new task </button>
                 <button style={warningStyle}> Delete done </button>
             </div>
-            <div style={ styles.centerContent }>
-                <ul style={styles.ul}>
-                    {cards.map((card) => (
-                        <Card
-                            key={card.id}
-                            card={card}
-                            onEdit={(id, data) => handleEdit(service, id, data, () => fetchData(service, setCards))}
-                            onDelete={(id) => handleDelete(service, id, () => fetchData(service, setCards))}
-                        />
-                    ))}
-                </ul>
+            <div style={styles.centerContent}>
+                {cards.length === 0 ? (
+                    <EmptyTable />
+                ) : (
+                    <ul style={styles.ul}>
+                        {cards.map((card) => (
+                            <Card
+                                key={card.id}
+                                card={card}
+                                onEdit={(id, data) => handleEdit(service, id, data, () => fetchData(service, setCards))}
+                                onDelete={(id) => handleDelete(service, id, () => fetchData(service, setCards))}
+                            />
+                        ))}
+                    </ul>
+                )}
             </div>
             <Modal isOpen={isNewTaskOpen} onClose={closeNewTask}>
                 <h2 style={styles.subtitle}>New Task</h2>
