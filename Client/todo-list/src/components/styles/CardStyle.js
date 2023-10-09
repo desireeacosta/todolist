@@ -1,7 +1,21 @@
 const styles = {
     div: {
         alignContent: "center",
-        margin: 16,
+        margin: 10,
+        border: "2px solid #9ECEC5",
+        padding: "10px 20px",
+        borderRadius: "5px",
+        width: "260px",
+    },
+    listItem: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        alignContent: "center",
+    },
+    rightContent: {
+        display: "flex",
+        alignItems: "center",
     },
     centerContent: {
         display: "flex",
@@ -37,7 +51,17 @@ const styles = {
     },
     p: {
         margin: "10px",
-    }
+    },
+    checkBox: {
+        border: "2px solid #9ECEC5",
+        borderRadius: "4px",
+        outline: "none",
+        cursor: "pointer",
+        width: "20px",
+        height: "20px",
+        marginRight: "8px",
+        color: "#9ECEC5"
+    },
 };
 
 export default styles;

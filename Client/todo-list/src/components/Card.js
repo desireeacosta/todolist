@@ -48,26 +48,30 @@ function Card({ card, onDelete, onEdit }) {
 
     return (
         <div style={styles.div}>
-            <li>
-                {card.name}
-                <button style={styles.ghostButton} onClick={openEdit}>
-                    <EditIcon />
-                </button>
-                <button style={styles.ghostButton} onClick={openDelete}>
-                    <DeleteIcon />
-                </button>
-                <input type="checkbox" checked={card.status} onChange={handleCheckboxChange} />
-            </li>
+            <div style={styles.listItem}>
+                <div style={styles.leftContent}>
+                    {card.name}
+                </div>
+                <div style={styles.rightContent}>
+                    <button style={styles.ghostButton} onClick={openEdit}>
+                        <EditIcon />
+                    </button>
+                    <button style={styles.ghostButton} onClick={openDelete}>
+                        <DeleteIcon />
+                    </button>
+                    <input style={styles.checkBox} type="checkbox" checked={card.status} onChange={handleCheckboxChange} />
+                </div>
+            </div>
             <Modal isOpen={isDeleteOpen} onClose={closeDelete}>
-                <h2 style={ styles.title }>Delete Task</h2>
-                <p style={ styles.p }>Are you sure you want to delete this card?</p>
+                <h2 style={styles.title}>Delete Task</h2>
+                <p style={styles.p}>Are you sure you want to delete this card?</p>
                 <button style={successStyle} onClick={handleDeleteClick}>Yes</button>
                 <button style={warningStyle} onClick={closeDelete}>No</button>
             </Modal>
             <Modal isOpen={isEditing} onClose={closeEdit}>
-                <h2 style={ styles.title }>Edit Task</h2>
+                <h2 style={styles.title}>Edit Task</h2>
                 <div style={styles.centerContent}>
-                    <input style={ styles.input } type="text" name="name" value={editedData.name} onChange={handleInputChange} />
+                    <input style={styles.input} type="text" name="name" value={editedData.name} onChange={handleInputChange} />
                 </div>
                 <div>
                     <button style={successStyle} onClick={saveEdit}>Save</button>
