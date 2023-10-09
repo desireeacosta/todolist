@@ -5,7 +5,7 @@ const styles = {
         border: "2px solid #9ECEC5",
         padding: "10px 20px",
         borderRadius: "5px",
-        width: "260px",
+        width: "350px",
     },
     listItem: {
         display: "flex",
@@ -24,7 +24,7 @@ const styles = {
     },
     ghostButton: {
         border: "none",
-        backgroundColor: "none",
+        backgroundColor: "#ffff",
         borderRadius: "50%",
     },
     button: {
@@ -49,7 +49,7 @@ const styles = {
         fontSize: "30px",
         margin: "10px",
     },
-    p: {
+    text: {
         margin: "10px",
     },
     checkBox: {
@@ -61,6 +61,17 @@ const styles = {
         height: "20px",
         marginRight: "8px",
         color: "#9ECEC5"
+    },
+    fixed: {
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        backgroundColor: "#ffffff",
+        padding: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+        borderTop: "1px solid #ccc",
     },
 };
 

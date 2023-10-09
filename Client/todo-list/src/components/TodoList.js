@@ -36,8 +36,12 @@ function TodoList() {
 
     return (
         <>
-            <h1 style={styles.centerContent}>Todo List</h1>
+            <h1 style={{...styles.centerContent, ...styles.title}}>Todo List</h1>
             <div style={styles.centerContent}>
+                <button style={successStyle} onClick={openNewTask}> Add new task </button>
+                <button style={warningStyle}> Delete done </button>
+            </div>
+            <div style={ styles.centerContent }>
                 <ul style={styles.ul}>
                     {cards.map((card) => (
                         <Card
@@ -49,12 +53,8 @@ function TodoList() {
                     ))}
                 </ul>
             </div>
-            <div style={styles.centerContent}>
-                <button style={ successStyle } onClick={openNewTask}> Add new task </button>
-                <button style={ warningStyle }> Delete done </button>
-            </div>
             <Modal isOpen={isNewTaskOpen} onClose={closeNewTask}>
-                <h2 style={ styles.title }>New Task</h2>
+                <h2 style={styles.subtitle}>New Task</h2>
                 <TaskForm
                     formData={formData}
                     setFormData={setFormData}

@@ -4,7 +4,7 @@ const warningStyle = {
   border: "none",
   borderRadius: "5px",
   fontWeight: "bold",
-  fontSize: "16px",
+  fontSize: "24px",
   color: "#ffffff",
   backgroundColor: "#CE9EAF",
 };
