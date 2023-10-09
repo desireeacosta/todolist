@@ -1,40 +1,9 @@
 import React from 'react';
+import successStyle from './styles/SuccessStyle';
+import styles from './styles/TaskFormStyle';
+import warningStyle from './styles/WarningStyle';
 
 const TodoForm = ({ formData, setFormData, handleCreateClick, closeNewTask }) => {
-    const styles = {
-        button: {
-            padding: "10px 25px",
-            margin: "10px 5px",
-            border: "none",
-            borderRadius: "5px",
-            fontWeight: "bold",
-            fontSize: "16px",
-            color: "#ffffff",
-        },
-        text: {
-            margin: "10px",
-        },
-        input: {
-            border: "2px solid #9ECEC5",
-            fontSize: "16px",
-            borderRadius: "5px",
-            padding: "8px",
-            outline: "none",
-            width: "300px",
-            margin: "10px",
-        },
-    };
-
-    const successStyle = {
-        ...styles.button,
-        backgroundColor: "#9ECEA9",
-    };
-
-    const warningStyle = {
-        ...styles.button,
-        backgroundColor: "#CE9EAF",
-    };
-
     return (
         <form>
             <label style={ styles.text }>

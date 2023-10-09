@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import DeleteIcon from './icons/DeleteIcon';
 import EditIcon from './icons/EditIcon';
 import Modal from './Modal';
+import styles from './styles/CardStyle';
+import successStyle from './styles/SuccessStyle';
+import warningStyle from './styles/WarningStyle';
 
 function Card({ card, onDelete, onEdit }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -41,58 +44,6 @@ function Card({ card, onDelete, onEdit }) {
 
     const handleCheckboxChange = () => {
         onEdit(card.id, { ...editedData, status: !card.status });
-    };
-
-    const styles = {
-        div: {
-            alignContent: "center",
-            margin: 16,
-        },
-        centerContent: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        ghostButton: {
-            border: "none",
-            backgroundColor: "none",
-            borderRadius: "50%",
-        },
-        button: {
-            padding: "10px 25px",
-            margin: "10px 5px",
-            border: "none",
-            borderRadius: "5px",
-            fontWeight: "bold",
-            fontSize: "16px",
-            color: "#ffffff",
-        },
-        input: {
-            border: "2px solid #9ECEC5",
-            fontSize: "16px",
-            borderRadius: "5px",
-            padding: "8px",
-            outline: "none",
-            width: "300px",
-            margin: "10px",
-        },
-        title: {
-            fontSize: "30px",
-            margin: "10px",
-        },
-        p: {
-            margin: "10px",
-        }
-    };
-
-    const successStyle = {
-        ...styles.button,
-        backgroundColor: "#9ECEA9",
-    };
-
-    const warningStyle = {
-        ...styles.button,
-        backgroundColor: "#CE9EAF",
     };
 
     return (

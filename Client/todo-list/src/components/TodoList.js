@@ -4,6 +4,9 @@ import apiService from '../service/apiService';
 import { fetchData, handleCreate, handleDelete, handleEdit } from '../utils/helperFunctions';
 import Modal from './Modal';
 import TaskForm from './TaskForm';
+import styles from './styles/TodoListStyle';
+import successStyle from './styles/SuccessStyle';
+import warningStyle from './styles/WarningStyle';
 
 const service = apiService();
 
@@ -31,26 +34,6 @@ function TodoList() {
         fetchData(service, setCards);
     }, []);
 
-    const styles = {
-        ul: {
-            listStyleType: "none",
-            margin: 0,
-            padding: 0,
-        },
-        centerContent: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        button: {
-            margin: 5,
-        },
-        title: {
-            fontSize: "30px",
-            margin: "10px",
-        },
-    };
-
     return (
         <>
             <h1 style={styles.centerContent}>Todo List</h1>
@@ -67,8 +50,8 @@ function TodoList() {
                 </ul>
             </div>
             <div style={styles.centerContent}>
-                <button style={ styles.button } onClick={openNewTask}> Add new task </button>
-                <button style={ styles.button }> Delete done </button>
+                <button style={ successStyle } onClick={openNewTask}> Add new task </button>
+                <button style={ warningStyle }> Delete done </button>
             </div>
             <Modal isOpen={isNewTaskOpen} onClose={closeNewTask}>
                 <h2 style={ styles.title }>New Task</h2>
