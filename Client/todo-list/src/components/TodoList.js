@@ -40,7 +40,6 @@ function TodoList() {
             <h1 style={{ ...styles.centerContent, ...styles.title }}>Todo List</h1>
             <div style={styles.centerContent}>
                 <button style={successStyle} onClick={openNewTask}> Add new task </button>
-                <button style={warningStyle}> Delete done </button>
             </div>
             <div style={styles.centerContent}>
                 {cards.length === 0 ? (
