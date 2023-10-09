@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiService = () => {
-    const baseUrl = `http://localhost:5131/api/Card`;
+    const baseUrl = process.env.REACT_APP_ENDPOINT;
 
     return {
         getAll: async () => {
