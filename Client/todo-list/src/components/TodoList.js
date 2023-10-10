@@ -6,7 +6,6 @@ import Modal from './Modal';
 import TaskForm from './TaskForm';
 import styles from './styles/TodoListStyle';
 import successStyle from './styles/SuccessStyle';
-import warningStyle from './styles/WarningStyle';
 import EmptyTable from './EmptyTable';
 
 const service = apiService();
@@ -50,6 +49,7 @@ function TodoList() {
                             <Card
                                 key={card.id}
                                 card={card}
+                                className="a-name"
                                 onEdit={(id, data) => handleEdit(service, id, data, () => fetchData(service, setCards))}
                                 onDelete={(id) => handleDelete(service, id, () => fetchData(service, setCards))}
                             />

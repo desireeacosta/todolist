@@ -62,17 +62,6 @@ const styles = {
         marginRight: "8px",
         color: "#9ECEC5"
     },
-    fixed: {
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        width: "100%",
-        backgroundColor: "#ffffff",
-        padding: "10px",
-        display: "flex",
-        justifyContent: "space-around",
-        borderTop: "1px solid #ccc",
-    },
 };
 
 export default styles;
