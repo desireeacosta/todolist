@@ -9,7 +9,7 @@ using Server.Services;
 namespace Server.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("/")]
     public class CardController : ControllerBase
     {
         private readonly MongoDBService _mongoDBService;
