@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const apiService = () => {
-    const baseUrl = process.env.REACT_APP_ENDPOINT;
+    const baseURL = process.env.REACT_APP_ENDPOINT;
 
     return {
         getAll: async () => {
             try {
-                const response = await axios.get(baseUrl);
+                const response = await axios.get(baseURL);
                 return response.data;
             } catch (error) {
                 throw error;
@@ -15,7 +15,7 @@ const apiService = () => {
 
         create: async (data) => {
             try {
-                const response = await axios.post(baseUrl, data);
+                const response = await axios.post(baseURL, data);
                 return response.data;
             } catch (error) {
                 throw error;
@@ -24,7 +24,7 @@ const apiService = () => {
 
         delete: async (id) => {
             try {
-                const response = await axios.delete(`${baseUrl}/${id}`);
+                const response = await axios.delete(`${baseURL}/${id}`);
                 return response.data;
             } catch (error) {
                 throw error;
@@ -33,7 +33,7 @@ const apiService = () => {
 
         edit: async (id, data) => {
             try {
-                const response = await axios.put(`${baseUrl}/${id}`, data);
+                const response = await axios.put(`${baseURL}/${id}`, data);
                 return response.data;
             } catch (error) {
                 throw error;
