@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiService = () => {
-    const baseURL = process.env.REACT_APP_ENDPOINT;
+    const baseURL = "https://webappdevd14.azurewebsites.net/";
 
     return {
         getAll: async () => {
